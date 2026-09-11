@@ -18,3 +18,11 @@ Also added contributing.md so my CI/CD process can be written down and improved 
 
 Day 4:
 I added Network Security Groups (NSGs) to the Hub VNet to secure inbound and outbound traffic. This involved creating a new NSG.tf file in my Hub module and configuring specific security rules for the Azure Bastion Subnet and the Private DNS Resolver Subnet. During validation, I caught and resolved a syntax issue regarding Terraform's case-sensitivity for protocol arguments (ensuring values like Tcp and Udp were formatted correctly). Finally, I successfully pushed the code through a PR, deployed the infrastructure to Azure, and updated contributing.md with a newly refined, standardized Git/Terraform deployment workflow for future feature branches.
+
+Day 5:
+Added `modules/Hub/outputs.tf`, exposing two values so other modules can reference the hub without duplicating resource lookups:
+
+- `vnet_id` — the hub VNet's resource ID, used by spoke modules for VNet peering
+- `vnet_name` — the hub VNet's name
+
+This unblocks the shared-services (and future site-spoke) modules from establishing peering back to the hub.
