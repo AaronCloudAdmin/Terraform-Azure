@@ -28,3 +28,6 @@ This unblocks the shared-services (and future site-spoke) modules from establish
     Part 2:
 
     Added the variables.tf for the Shared-Services spoke VNet.
+
+
+Day 6: I Deployed the Shared Services VNet. This will be for various mgmt and production related VMs such as the print servers, SSO, Clinical App servers, Disaster Recovery, etc.
