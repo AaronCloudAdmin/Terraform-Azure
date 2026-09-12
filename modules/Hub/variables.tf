@@ -1,13 +1,11 @@
 variable "location" {
   description = "The location for the resources"
   type        = string
-  default     = "East US"
 }
 
 variable "resource_group_name" {
   description = "The name of the resource group"
   type        = string
-  default     = "rg1"
 }
 
 variable "environment" {

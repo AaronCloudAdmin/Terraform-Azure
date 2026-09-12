@@ -34,7 +34,7 @@ resource "azurerm_subnet" "PrivateDNS" {
 
     service_delegation {
       name    = "Microsoft.Network/dnsResolvers"
-      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action"]
+      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
     }
   }
 }
