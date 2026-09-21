@@ -13,21 +13,21 @@ resource "azurerm_subnet" "Firewall" {
   name                 = "AzureFirewallSubnet"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.hub.name
-  address_prefixes     = [var.firewall_subnet_prefix]
+  address_prefixes     = [var.firewall_cidr]
 }
 
 resource "azurerm_subnet" "Gateway" {
   name                 = "GatewaySubnet"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.hub.name
-  address_prefixes     = [var.gateway_subnet_prefix]
+  address_prefixes     = [var.gateway_cidr]
 }
 
 resource "azurerm_subnet" "PrivateDNS" {
   name                 = "PrivateDNSsubnet"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.hub.name
-  address_prefixes     = [var.private_dns_subnet_prefix]
+  address_prefixes     = [var.private_dns_cidr]
 
   delegation {
     name = "delegation"
@@ -43,5 +43,5 @@ resource "azurerm_subnet" "Bastion" {
   name                 = "AzureBastionSubnet"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.hub.name
-  address_prefixes     = [var.bastion_subnet_prefix]
+  address_prefixes     = [var.bastion_cidr]
 }
