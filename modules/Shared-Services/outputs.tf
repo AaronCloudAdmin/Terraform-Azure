@@ -25,3 +25,15 @@ output "data_cidr" {
 output "identity_cidr" {
   value = var.identity_cidr
 }
+
+output "mgmt_cidr" {
+  value = var.mgmt_cidr
+}
+
+output "apps_cidr" {
+  value = var.apps_cidr
+}
+
+output "printer_cidr" {
+  value = var.printer_cidr
+}
