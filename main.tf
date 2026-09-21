@@ -32,3 +32,36 @@ module "shared_services" {
   resource_group_name = azurerm_resource_group.rg1.name
   environment         = var.environment
 }
+
+module "public_website" {
+  source              = "./modules/Public-Website"
+  location            = azurerm_resource_group.rg1.location
+  resource_group_name = azurerm_resource_group.rg1.name
+  environment         = var.environment
+}
+
+module "hq" {
+  source                   = "./modules/Admin-Sites"
+  location                 = azurerm_resource_group.rg1.location
+  resource_group_name      = azurerm_resource_group.rg1.name
+  environment              = var.environment
+  admin_site_address_space = ["10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24"]
+  wired_devices_cidr       = "10.0.2.0/24"
+  prod_wifi_cidr           = "10.0.3.0/24"
+  guest_wifi_cidr          = "10.0.4.0/24"
+  identity_cidr            = module.shared_services.identity_cidr
+  data_cidr                = module.shared_services.data_cidr
+}
+
+module "annex" {
+  source                   = "./modules/Admin-Sites"
+  location                 = azurerm_resource_group.rg1.location
+  resource_group_name      = azurerm_resource_group.rg1.name
+  environment              = var.environment
+  admin_site_address_space = ["10.0.5.0/24", "10.0.6.0/24", "10.0.7.0/24"]
+  wired_devices_cidr       = "10.0.5.0/24"
+  prod_wifi_cidr           = "10.0.6.0/24"
+  guest_wifi_cidr          = "10.0.7.0/24"
+  identity_cidr            = module.shared_services.identity_cidr
+  data_cidr                = module.shared_services.data_cidr
+}

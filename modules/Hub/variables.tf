@@ -11,7 +11,6 @@ variable "resource_group_name" {
 variable "environment" {
   description = "The environment for the deployment"
   type        = string
-  default     = "dev"
 }
 
 variable "address_space" {
@@ -20,24 +19,24 @@ variable "address_space" {
   default     = ["10.0.0.0/24"]
 }
 
-variable "firewall_subnet_prefix" {
+variable "firewall_cidr" {
   description = "The address prefix for the Azure Firewall subnet"
   type        = string
   default     = "10.0.0.0/26"
 }
 
-variable "gateway_subnet_prefix" {
+variable "gateway_cidr" {
   description = "The address prefix for the Gateway subnet"
   type        = string
   default     = "10.0.0.64/27"
 }
-variable "private_dns_subnet_prefix" {
+variable "private_dns_cidr" {
   description = "The address prefix for the Private DNS subnet"
   type        = string
   default     = "10.0.0.96/28"
 }
 
-variable "bastion_subnet_prefix" {
+variable "bastion_cidr" {
   description = "The address prefix for the Azure Bastion subnet"
   type        = string
   default     = "10.0.0.128/26"
